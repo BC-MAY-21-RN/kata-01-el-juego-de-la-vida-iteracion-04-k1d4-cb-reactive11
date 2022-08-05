@@ -22,39 +22,32 @@ module.exports = class Board {
   Puntaje(array) {
     let puntaje = [];
     let pun = [];
-
     var contador = 0;
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array[1].length; j++) {
         contador = 0;
-
-          for (let l = i - 1; l <= i + 1; l++) {
-            for (let k = j - 1; k <= j + 1; k++) {
-              if (l <= -1 || l >= array.length) break;
-              if (k <= -1 || k >= array.length * array[1].length) break;
-              if (array[l][k] == 1) {
-                contador++;
-              }
+        for (let l = i - 1; l <= i + 1; l++) {
+          for (let k = j - 1; k <= j + 1; k++) {
+            if (l <= -1 || l >= array.length) break;
+            if (k <= -1 || k >= array.length * array[1].length) break;
+            if (array[l][k] == 1) {
+              contador++;
             }
           }
-          pun.push(contador);
-        
+        }
+        pun.push(contador);
       }
       puntaje.push(pun);
       pun = [];
     }
     return puntaje;
   }
-
   Interaccion(puntaje, array) {
     let result = [];
     let res = [];
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array[1].length; j++) {
-        if (
-          array[i][j] == 1 
-        )
-        {
+        if (array[i][j] == 1) {
           if (puntaje[i][j] == 3 || puntaje[i][j] == 4)
             //Cualquier celda viva con dos o tres vecinos vivos vive en la próxima generación.
             res.push(1);
@@ -74,4 +67,4 @@ module.exports = class Board {
     }
     return result;
   }
-}
+};
