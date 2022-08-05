@@ -1,4 +1,4 @@
-class Board {
+module.exports = class Board {
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -28,7 +28,6 @@ class Board {
       for (let j = 0; j < array[1].length; j++) {
         contador = 0;
 
-        if (array[i][j] == 1) {
           for (let l = i - 1; l <= i + 1; l++) {
             for (let k = j - 1; k <= j + 1; k++) {
               if (l <= -1 || l >= array.length) break;
@@ -39,21 +38,7 @@ class Board {
             }
           }
           pun.push(contador);
-        }
-
-        if (array[i][j] == 0) {
-          for (let l = i - 1; l <= i + 1; l++) {
-            for (let k = j - 1; k <= j + 1; k++) {
-              if (l <= -1 || l >= array.length) break;
-              if (k <= -1 || k >= array.length * array[1].length) break;
-
-              if (array[l][k] == 1) {
-                contador++;
-              }
-            }
-          }
-          pun.push(contador);
-        }
+        
       }
       puntaje.push(pun);
       pun = [];
@@ -97,5 +82,3 @@ class Board {
     return result;
   }
 }
-
-export default Board;
