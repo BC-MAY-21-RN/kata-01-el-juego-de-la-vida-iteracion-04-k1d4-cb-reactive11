@@ -1,0 +1,21 @@
+{
+  "name": "kata-01-el-juego-de-la-vida-iteracion-04-k1d4-cb-reactive11",
+  "version": "1.0.0",
+  "description": "![BrightCoders Logo](img/logo-bc.png)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BC-MAY-21-RN/kata-01-el-juego-de-la-vida-iteracion-04-k1d4-cb-reactive11.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BC-MAY-21-RN/kata-01-el-juego-de-la-vida-iteracion-04-k1d4-cb-reactive11/issues"
+  },
+  "homepage": "https://github.com/BC-MAY-21-RN/kata-01-el-juego-de-la-vida-iteracion-04-k1d4-cb-reactive11#readme"
+}
