@@ -51,24 +51,17 @@ module.exports = class Board {
     let res = [];
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array[1].length; j++) {
-        //Cualquier celda viva con dos o tres vecinos vivos vive en la próxima generación.
         if (
-          array[i][j] == 1 &&
-          puntaje[i][j] == 3 &&
-          array[i][j] == 1 &&
-          puntaje[i][j] == 4
-        ) {
-          res.push(1);
-        }
-        //celula muere si tiene menos de 2 celulas vivas vecinas
-        //celula muere si tiene mas de 3 celulas vivas vecinas
-        else if (
-          array[i][j] == 1 &&
-          puntaje[i][j] < 3 &&
-          array[i][j] == 1 &&
-          puntaje[i][j] > 4
-        ) {
-          res.push(0);
+          array[i][j] == 1 
+        )
+        {
+          if (puntaje[i][j] == 3 || puntaje[i][j] == 4)
+            //Cualquier celda viva con dos o tres vecinos vivos vive en la próxima generación.
+            res.push(1);
+          else if (puntaje[i][j] < 3 || puntaje[i][j] > 4)
+            //celula muere si tiene menos de 2 celulas vivas vecinas
+            //celula muere si tiene mas de 3 celulas vivas vecinas
+            res.push(0);
         }
         //Cualquier celda muerta con exactamente tres vecinos vivos se convierte en una celda viva.
         else if (array[i][j] == 0 && puntaje[i][j] == 3) {
