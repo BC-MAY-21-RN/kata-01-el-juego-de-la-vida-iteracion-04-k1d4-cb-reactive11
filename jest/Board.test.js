@@ -1,13 +1,14 @@
 //import Board from '../Board.js';
 const Board = require('../Board');
-const board = new Board(6, 6);
+const board = new Board(6, 6, 3, 6);
 
 beforeAll(() => {
-  board.createDimensions()
+  board.start()
+  console.table(board.cells)
 });
 
-test('creates dimentions', () => {
-    var tempArray = board.createDimensions();
-    expect(board.createDimensions().lenght).toBe(tempArray.lenght());
+test('Advances Cicles', () => {
+  var CellsBefore = board.cells;
+  expect(board.Cicles()).not.toBe(CellsBefore);
 });
 
