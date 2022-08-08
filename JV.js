@@ -1,4 +1,4 @@
-import Board from './Board.js';
+const Board = require('./Board');
 
 Repetir(3);
 
@@ -7,7 +7,7 @@ function Repetir(int) {
   let punt;
   let arr = firstGen.table;
   for (let i = 1; i <= int; i++) {
-    if (i == 0) console.table(arr);
+    if (i == 1) console.table(arr);
     punt = firstGen.Puntaje(arr);
     arr = firstGen.Interaccion(punt, arr);
     //console.table(punt)

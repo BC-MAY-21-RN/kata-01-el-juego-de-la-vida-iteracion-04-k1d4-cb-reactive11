@@ -5,8 +5,7 @@ module.exports = class Board {
     this.table = this.createDimensions();
   }
   createDimensions() {
-    let array1 = [];
-    let array2 = [];
+    let array1, array2 = [];
     for (let i = 0; i < this.y; i++) {
       for (let j = 0; j < this.x; j++) {
         let x = Math.floor(Math.random() * 2);
@@ -20,16 +19,15 @@ module.exports = class Board {
   }
 
   Puntaje(array) {
-    let puntaje = [];
-    let pun = [];
-    var contador = 0;
+    let puntaje, pun = [];
+    let contador = 0;
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array[1].length; j++) {
         contador = 0;
         for (let l = i - 1; l <= i + 1; l++) {
           for (let k = j - 1; k <= j + 1; k++) {
             if (l <= -1 || l >= array.length) break;
-            if (k <= -1 || k >= array.length * array[1].length) break;
+            if (k <= -2 || k >= array[1].length) break;
             if (array[l][k] == 1) {
               contador++;
             }
