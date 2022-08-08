@@ -5,57 +5,58 @@ module.exports = class Board {
     this.table = this.createDimensions();
   }
   createDimensions() {
-    let array1, array2 = [];
+    let array = [];
+    let arrayControl = [];
     for (let i = 0; i < this.y; i++) {
       for (let j = 0; j < this.x; j++) {
         let x = Math.floor(Math.random() * 2);
-        array2.push(x);
+        arrayControl.push(x);
       }
-      array1.push(array2);
-      array2 = [];
+      array.push(arrayControl);
+      arrayControl = [];
     }
-    this.table = array1;
+    this.table = array;
     return this.table;
   }
 
-  Puntaje(array) {
-    let puntaje, pun = [];
-    let contador = 0;
+  createScore(array) {
+    let score = [];
+    let pun = [];
+    let cont = 0;
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array[1].length; j++) {
-        contador = 0;
+        cont = 0;
         for (let l = i - 1; l <= i + 1; l++) {
           for (let k = j - 1; k <= j + 1; k++) {
-            if (l <= -1 || l >= array.length) break;
-            if (k <= -2 || k >= array[1].length) break;
-            if (array[l][k] == 1) {
-              contador++;
-            }
+            if (l <= -1 || l >= array.length || k <= -2 || k >= array[1].length)
+              break;
+            if (array[l][k] == 1) 
+              cont++;
           }
         }
-        pun.push(contador);
+        pun.push(cont);
       }
-      puntaje.push(pun);
+      score.push(pun);
       pun = [];
     }
-    return puntaje;
+    return score;
   }
-  Interaccion(puntaje, array) {
+  createGeneration(score, array) {
     let result = [];
     let res = [];
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array[1].length; j++) {
         if (array[i][j] == 1) {
-          if (puntaje[i][j] == 3 || puntaje[i][j] == 4)
+          if (score[i][j] == 3 || score[i][j] == 4)
             //Cualquier celda viva con dos o tres vecinos vivos vive en la próxima generación.
             res.push(1);
-          else if (puntaje[i][j] < 3 || puntaje[i][j] > 4)
+          else if (score[i][j] < 3 || score[i][j] > 4)
             //celula muere si tiene menos de 2 celulas vivas vecinas
             //celula muere si tiene mas de 3 celulas vivas vecinas
             res.push(0);
         }
         //Cualquier celda muerta con exactamente tres vecinos vivos se convierte en una celda viva.
-        else if (array[i][j] == 0 && puntaje[i][j] == 3) {
+        else if (array[i][j] == 0 && score[i][j] == 3) {
           res.push(1);
         } else res.push(0);
       }
