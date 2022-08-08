@@ -57,7 +57,7 @@ module.exports = class Board {
     for (let i = 0; i < this.columns; i++) {
       for (let j = 0; j < this.rows; j++) { 
         contador = this.neighbourCounter(i, j);
-        res.push(this.Rules(j, i, contador))
+        res.push(this.Rules(i, j, contador))
       }
       result.push(res);
       res = [];
@@ -73,20 +73,21 @@ module.exports = class Board {
     for (var i = -1; i <= 1; i++)
       for (var j = -1; j <= 1; j++){
         var horizontal = x + j;
-        var vertical = y + j;
+        var vertical = y + i;
         if ((horizontal >= 0 && horizontal <= this.rows-1) && (vertical >= 0 && vertical <= this.columns-1))
-          if(this.cells[horizontal][vertical] == 1 && (x!=horizontal && y!=vertical))
+          if(this.cells[horizontal][vertical] == 1 && !(x==horizontal && y==vertical))
             neighbours++;
-    }
+      }
+    //console.table(this.cells)
     return neighbours;
   }
   
   Rules(x, y, n) {
     if (this.cells[x][y] == 1) { // Is Alive
-      if (n == 3 || n == 4)
+      if (n == 2 || n == 3)
         // n == 3 > Lives
         return 1;
-      else if (n < 3 || n > 4)
+      else if (n < 2 || n > 3)
         // n > 3 || n < 2 > Dies
         return 0 ;
       }

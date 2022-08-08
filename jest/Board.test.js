@@ -25,6 +25,7 @@ test('Counts Neighbours', () => {
       board.cells[x + j][y + i] = 1;
     }
   }
-  espect(board.neighbourCounter(x, y)).toBe(8);
+  //console.table(board.cells)
+  expect(board.neighbourCounter(x, y)).toBe(8);
 });
 
