@@ -29,3 +29,18 @@ test('Counts Neighbours', () => {
   expect(board.neighbourCounter(x, y)).toBe(8);
 });
 
+test('InitializeCells', () => {
+  for (var i = 0; i < this.columns; i++){
+    for (var j = 0; j < this.rows; j++){
+      this.cells[j][i] = 0;
+    }
+    }
+});
+
+test('Rules', () => {
+  if (this.cells[x][y] == 1) { // Is Alive
+    if (n == 2 || n == 3)
+      return 1;
+  }
+});
+
